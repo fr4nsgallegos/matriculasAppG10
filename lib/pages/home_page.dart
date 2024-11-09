@@ -106,10 +106,25 @@ class _HomePageState extends State<HomePage> {
                     (e) => ListTile(
                       title: Text(
                           "${e.student.name} ${e.student.lastname} - ${e.carrera.nombre}"),
-                      trailing: IconButton(
-                        color: Colors.red,
-                        onPressed: () {},
-                        icon: Icon(Icons.delete),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            color: Colors.red,
+                            onPressed: () {
+                              institution.matriculasList.remove(e);
+                              setState(() {});
+                            },
+                            icon: Icon(Icons.delete),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.edit,
+                            ),
+                            color: Colors.blue,
+                          )
+                        ],
                       ),
                     ),
                   )
