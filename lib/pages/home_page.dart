@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                               date: "09/11/2024",
                               hour: "11:26",
                               student: PersonModel(
-                                  name: "Benito",
+                                  name: "Lucas",
                                   lastname: "Perez",
                                   address: "address"),
                               carrera: carrera1,
@@ -94,7 +94,10 @@ class _HomePageState extends State<HomePage> {
                         icon: Icon(Icons.add),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          institution.matriculasList.clear();
+                          setState(() {});
+                        },
                         icon: Icon(Icons.cleaning_services),
                       ),
                     ],
@@ -103,6 +106,11 @@ class _HomePageState extends State<HomePage> {
                     (e) => ListTile(
                       title: Text(
                           "${e.student.name} ${e.student.lastname} - ${e.carrera.nombre}"),
+                      trailing: IconButton(
+                        color: Colors.red,
+                        onPressed: () {},
+                        icon: Icon(Icons.delete),
+                      ),
                     ),
                   )
                 ],
