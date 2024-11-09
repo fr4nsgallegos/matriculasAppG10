@@ -58,6 +58,7 @@ class _HomePageState extends State<HomePage> {
     return ListTile(
       title:
           Text("${e.student.name} ${e.student.lastname} - ${e.carrera.nombre}"),
+      subtitle: Text(e.student.nacionality),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
