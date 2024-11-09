@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:matriculasappg10/models/carrera_model.dart';
+import 'package:matriculasappg10/models/matricula_model.dart';
+import 'package:matriculasappg10/models/person_model.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -6,62 +9,49 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Map<String, dynamic> persona1 = {
-    "name": "Jhonny",
-    "lastname": "Gallegos",
-    "address": "Calle 123",
-    "dni": "1234678",
-    "nacionalidad": "Peruan@",
-  };
+  PersonModel personaModel1 = PersonModel(
+    name: "Mathias",
+    lastname: "Parra",
+    address: "Av 123",
+  );
 
-  Map<String, dynamic> institucion1 = {
-    "name": "Tecsup",
-    "direccion": "Calle Lima 123",
-    "ruc": "987654321654",
-    "matriculas": [],
-  };
+  CarreraModel carrera1 = CarreraModel("Ing. Sistemas", "5 años");
 
-  Map<String, dynamic> matricula1 = {
-    "date": "09/11/2024",
-    "hour": "10:21",
-    "student": {
-      "name": "Jhonny",
-      "lastname": "Gallegos",
-      "address": "Calle 123",
-      "dni": "1234678",
-      "nacionalidad": "Peruan@",
-    },
-    "carrera": "Diseño",
-  };
+  List<MatriculaModel> matriculasList = [];
 
   List<ListTile> personasListTile = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.blueAccent,
       appBar: AppBar(),
       body: Center(
         child: Column(
           children: [
             ElevatedButton(
               onPressed: () {
-                personasListTile.add(
-                  ListTile(
-                    title: Text("${persona1["name"]} ${persona1["lastname"]}"),
-                    subtitle:
-                        Text("${persona1["address"]} -  ${persona1["dni"]}"),
+                matriculasList.add(
+                  MatriculaModel(
+                    date: "09/11/2024",
+                    hour: "11:26",
+                    student: personaModel1,
+                    carrera: carrera1,
                   ),
                 );
                 setState(() {});
               },
               child: Text("Agregar usuario"),
             ),
+            ...matriculasList.map(
+              (e) => ListTile(
+                title: Text("${e.student.name} ${e.student.lastname}"),
+              ),
+            )
             // ListTile(
             //   title: Text("${persona1["name"]} ${persona1["lastname"]}"),
             //   subtitle: Text("${persona1["address"]} -  ${persona1["dni"]}"),
             // ),
-            ...personasListTile
+            // ...personasListTile
           ],
         ),
       ),
