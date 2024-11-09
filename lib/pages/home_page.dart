@@ -16,6 +16,24 @@ class _HomePageState extends State<HomePage> {
     address: "Av 123",
   );
 
+  List<int> numeros = [1, 2, 3];
+
+  List<Map<String, dynamic>> listaMapas = [
+    {
+      "mapa1clave": "valor1",
+    },
+    {
+      "mapa1clave2": "valor2",
+    },
+  ];
+
+  Map<String, dynamic> mapa1 = {
+    "clave": "valor",
+    "clave1": 123,
+    "list1": [1, 2, 3],
+    "mapa1": {"clave": "valor"},
+  };
+
   CarreraModel carrera1 = CarreraModel("Ing. Sistemas", "5 años");
 
   List<InstitutionModel> institutionList = [];
@@ -74,6 +92,10 @@ class _HomePageState extends State<HomePage> {
                           setState(() {});
                         },
                         icon: Icon(Icons.add),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.cleaning_services),
                       ),
                     ],
                   ),
